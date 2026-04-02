@@ -607,6 +607,122 @@ body {
   transition:transform .25s; z-index:999; white-space:nowrap;
 }
 .toast.show { transform:translateX(-50%) translateY(0); }
+
+/* ── LECTURA & QUIZ SCREENS ── */
+.quiz-hdr { padding:36px 24px 52px; position:relative; }
+.quiz-hdr::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:28px; background:var(--fondo); border-radius:50% 50% 0 0 / 28px 28px 0 0; }
+.quiz-hdr.az { background:linear-gradient(135deg,var(--azul),var(--azulC)); }
+.quiz-hdr.ti { background:linear-gradient(135deg,var(--tierra),var(--tierraC)); }
+.quiz-body { padding:16px 20px 80px; flex:1; overflow-y:auto; }
+.reading-card {
+  background:#fff; border-radius:14px; padding:14px 16px; margin-bottom:10px;
+  cursor:pointer; transition:transform .15s; display:flex; align-items:center; gap:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06); border:1.5px solid var(--borde);
+}
+.reading-card:active { transform:scale(.98); }
+.reading-title { font-family:'Fraunces',serif; font-size:20px; font-weight:700; color:var(--bosque); margin-bottom:12px; }
+.reading-text-box {
+  background:#fff; border-radius:14px; padding:16px 18px; font-size:13px;
+  line-height:1.7; color:var(--negro); box-shadow:0 2px 8px rgba(0,0,0,.06);
+  border:1px solid var(--borde); margin-bottom:14px;
+}
+.q-progress { display:flex; gap:4px; margin-bottom:14px; }
+.q-prog-dot { flex:1; height:4px; border-radius:99px; background:var(--borde); }
+.q-prog-dot.done { background:var(--azulC); }
+.q-prog-dot.active { background:var(--azul); }
+.q-card { background:#fff; border-radius:14px; padding:16px 18px; box-shadow:0 2px 8px rgba(0,0,0,.06); border:1px solid var(--borde); margin-bottom:12px; }
+.q-text { font-size:13px; font-weight:700; color:var(--negro); line-height:1.5; margin-bottom:14px; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt {
+  padding:11px 14px; border-radius:12px; border:1.5px solid var(--borde);
+  background:#fff; cursor:pointer; font-family:'DM Sans',sans-serif;
+  font-size:13px; font-weight:500; color:var(--negro); text-align:left;
+  transition:all .15s; width:100%;
+}
+.q-opt:hover:not(:disabled) { border-color:var(--azulC); background:#f0f7ff; }
+.q-opt.correct { background:#d8f3dc; border-color:var(--verde); color:var(--bosque); font-weight:600; }
+.q-opt.wrong { background:#fee2e2; border-color:#ef4444; color:#7f1d1d; }
+.q-opt:disabled { cursor:default; }
+.q-feedback { padding:10px 14px; border-radius:12px; margin-bottom:12px; font-size:12px; font-weight:500; line-height:1.45; display:none; }
+.q-feedback.show { display:block; }
+.q-feedback.ok { background:var(--verdeL); color:var(--bosque); }
+.q-feedback.no { background:#fee2e2; color:#991b1b; }
+.q-next-btn { width:100%; padding:13px; color:#fff; font-weight:700; font-size:14px; border-radius:14px; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; display:none; margin-top:4px; }
+.q-next-btn.az { background:linear-gradient(135deg,var(--azul),var(--azulC)); }
+.q-next-btn.ti { background:linear-gradient(135deg,var(--tierra),var(--tierraC)); }
+.q-next-btn.show { display:block; }
+.result-card { background:#fff; border-radius:20px; padding:28px 22px; text-align:center; box-shadow:0 4px 16px rgba(0,0,0,.08); border:1px solid var(--borde); }
+.result-emoji { font-size:52px; margin-bottom:8px; }
+.result-score { font-family:'Fraunces',serif; font-size:44px; font-weight:700; color:var(--verde); }
+.result-label { font-size:13px; color:var(--gris); margin-bottom:16px; }
+.result-badge { background:var(--verdeL); border:1px solid rgba(45,106,79,.2); border-radius:12px; padding:10px 14px; margin:8px 0 4px; font-size:12px; font-weight:600; color:var(--bosque); }
+.quiz-timer { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:var(--tierra); color:#fff; font-family:'Fraunces',serif; font-size:18px; font-weight:700; }
+.quiz-timer.warning { background:#ef4444; }
+.quiz-intro-card { background:linear-gradient(135deg,var(--tierra),var(--tierraC)); border-radius:16px; padding:24px; color:#fff; text-align:center; margin-bottom:14px; }
+
+/* ── ACTIVITY MODAL ── */
+.activity-modal {
+  position:fixed; inset:0; background:rgba(16,16,16,.68); z-index:1200;
+  display:none; align-items:center; justify-content:center; padding:14px;
+}
+.activity-modal.show { display:flex; }
+.activity-shell {
+  width:min(980px,100%); max-height:92vh; overflow:hidden;
+  background:var(--fondo); border-radius:18px; border:1px solid var(--borde);
+  box-shadow:0 18px 50px rgba(0,0,0,.34); display:flex; flex-direction:column;
+}
+.activity-head {
+  background:linear-gradient(135deg,var(--verde),var(--verdeS)); color:#fff;
+  padding:14px 18px; display:flex; align-items:center; justify-content:space-between; gap:10px;
+}
+.activity-head h3 { font-family:'Fraunces',serif; font-size:24px; font-weight:700; line-height:1.1; }
+.activity-head p { font-size:12px; opacity:.9; margin-top:3px; }
+.activity-close {
+  border:none; background:rgba(255,255,255,.16); color:#fff; width:34px; height:34px;
+  border-radius:10px; cursor:pointer; font-size:16px; font-weight:700;
+}
+.activity-body { padding:14px; overflow-y:auto; }
+.act-grid { display:grid; grid-template-columns:1fr; gap:10px; }
+.act-card {
+  background:#fff; border:1px solid var(--borde); border-radius:14px; padding:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.act-card h4 { font-size:14px; color:var(--bosque); margin-bottom:6px; }
+.act-card p { font-size:12px; color:var(--gris); line-height:1.45; }
+.act-btn {
+  margin-top:10px; border:none; cursor:pointer; font-family:'DM Sans',sans-serif;
+  background:linear-gradient(135deg,var(--azul),var(--azulC)); color:#fff;
+  padding:10px 12px; border-radius:10px; font-size:12px; font-weight:700;
+}
+.act-btn.ti { background:linear-gradient(135deg,var(--tierra),var(--tierraC)); }
+.act-btn.vd { background:linear-gradient(135deg,var(--verde),var(--verdeS)); }
+.act-meta { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; gap:10px; }
+.act-pill {
+  display:inline-block; border-radius:999px; font-size:11px; font-weight:700;
+  padding:4px 10px; background:var(--verdeL); color:var(--bosque);
+}
+.act-question { font-size:14px; font-weight:700; color:var(--negro); margin-bottom:10px; }
+.act-options { display:flex; flex-direction:column; gap:8px; }
+.act-option {
+  border:1.5px solid var(--borde); background:#fff; border-radius:10px;
+  padding:10px 12px; text-align:left; cursor:pointer; font-size:12px;
+}
+.act-option:disabled { cursor:default; }
+.act-option.ok { background:var(--verdeL); border-color:var(--verde); }
+.act-option.no { background:#fee2e2; border-color:#ef4444; }
+.act-feedback {
+  margin-top:10px; background:#f8fafc; border:1px solid #dbeafe; border-radius:10px;
+  padding:10px 12px; font-size:12px; color:#1e3a8a; line-height:1.4;
+}
+.act-next { margin-top:10px; width:100%; }
+.act-story {
+  background:#fff; border:1px solid var(--borde); border-radius:14px; padding:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.act-story p { font-size:13px; color:var(--negro); line-height:1.6; margin-bottom:10px; }
+.act-story-choices { display:flex; flex-direction:column; gap:8px; }
+.act-bar { height:8px; background:#e5e7eb; border-radius:99px; overflow:hidden; }
+.act-bar > span { display:block; height:100%; background:linear-gradient(90deg,var(--verde),var(--verdeM)); }
 </style>
 </head>
 <body>
@@ -1125,6 +1241,19 @@ body {
 </div><!-- /web-wrap -->
 </div><!-- /vp-web -->
 
+<div class="activity-modal" id="activity-modal" aria-hidden="true">
+  <div class="activity-shell">
+    <div class="activity-head">
+      <div>
+        <h3 id="activity-title">Actividad</h3>
+        <p id="activity-sub">Aprendizaje activo del territorio</p>
+      </div>
+      <button class="activity-close" onclick="closeActivity()" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="activity-body" id="activity-content"></div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -1146,17 +1275,17 @@ const MODS = {
     items:[
       {icon:'🌱',title:'Proyectos comunitarios',sub:'Agricultura sostenible y medio ambiente',tag:'3 activos',tc:'tag-g'},
       {icon:'🎥',title:'Videos cortos (offline)',sub:'Cultura local y tradiciones',tag:'Descargable',tc:'tag-b'},
-      {icon:'📖',title:'Guías de aprendizaje',sub:'Material pedagógico situado',tag:'8 guías',tc:'tag-g'},
-      {icon:'💧',title:'Cuidado del agua',sub:'Proyecto: el río Magdalena',tag:'Nuevo',tc:'tag-b'},
+      {icon:'📖',title:'Guías de aprendizaje',sub:'Material pedagógico situado',tag:'8 guías',tc:'tag-g',activity:'readingHub'},
+      {icon:'💧',title:'Cuidado del agua',sub:'Proyecto: el río Magdalena',tag:'Nuevo',tc:'tag-b',activity:'readingRio'},
     ]
   },
   juegos: {
     icon:'🎮', name:'Juegos Educativos', color:'tierra',
     desc:'Aprende jugando con el territorio y sus saberes',
     items:[
-      {icon:'🧩',title:'Quiz del territorio',sub:'¿Cuánto conoces el Magdalena?',tag:'Nivel 2',tc:'tag-g'},
-      {icon:'🗺',title:'¿Dónde está?',sub:'Ubica lugares en el mapa',tag:'Popular',tc:'tag-b'},
-      {icon:'📖',title:'Historias interactivas',sub:'Elige tu propia aventura rural',tag:'Nuevo',tc:'tag-g'},
+      {icon:'🧩',title:'Quiz del territorio',sub:'¿Cuánto conoces el Magdalena?',tag:'Nivel 2',tc:'tag-g',activity:'quizTerritorio'},
+      {icon:'🗺',title:'¿Dónde está?',sub:'Ubica lugares en el mapa',tag:'Popular',tc:'tag-b',activity:'quizMapa'},
+      {icon:'📖',title:'Historias interactivas',sub:'Elige tu propia aventura rural',tag:'Nuevo',tc:'tag-g',activity:'story'},
       {icon:'🌾',title:'Cuida tu cultivo',sub:'Juego de decisiones agrícolas',tag:'Próximo',tc:'tag-y'},
     ]
   },
@@ -1207,6 +1336,90 @@ const screenKeys = ['hero','login','dash','mod','mapa','perfil','acerca'];
 let curView = 'mobile', curScreen = 'hero';
 let toastTimer;
 let curMapSpot = 'barranquilla';
+let actTimer = null;
+let actState = {
+  bank: [],
+  idx: 0,
+  score: 0,
+  lock: false,
+  seconds: 30,
+  reading: null,
+  storyNode: 'inicio',
+  eco: 50,
+};
+
+const READING_TOPICS = [
+  {
+    id:'rio',
+    title:'El rio Magdalena',
+    text:'El rio Magdalena estructura la vida social y economica de muchas comunidades. Transporta sedimentos, conecta territorios y sostiene actividades como pesca, agricultura y comercio local. Su cuidado implica reducir vertimientos, proteger rondas hidricas y promover practicas comunitarias de vigilancia ambiental.',
+    questions:[
+      {q:'Cual es una funcion clave del rio Magdalena en el territorio?', opts:['Solo turismo','Conectar territorios y sostener economias locales','Marcar fronteras internacionales','Servir unicamente para energia'], a:1, exp:'Ademas de su valor ambiental, el rio conecta poblaciones y sustenta economias comunitarias.'},
+      {q:'Una accion de cuidado adecuada es:', opts:['Aumentar vertimientos','Eliminar vegetacion de ronda','Vigilancia ambiental comunitaria','Construir sobre humedales'], a:2, exp:'La vigilancia comunitaria fortalece la prevencion y respuesta local.'},
+      {q:'Por que proteger las rondas hidricas?', opts:['Para evitar recreacion','Para reducir riesgo y conservar biodiversidad','Para cerrar acceso al agua','No es necesario'], a:1, exp:'La ronda hidrica funciona como franja de proteccion ecologica y de riesgo.'}
+    ]
+  },
+  {
+    id:'cienaga',
+    title:'Cienaga Grande de Santa Marta',
+    text:'La Cienaga Grande es uno de los humedales mas importantes del Caribe colombiano. Regula agua, alberga aves y especies acuaticas, y sostiene actividades tradicionales de pesca. Las decisiones sobre uso del suelo y calidad del agua afectan directamente su equilibrio.',
+    questions:[
+      {q:'La Cienaga Grande es importante porque:', opts:['Solo produce sal','Es un humedal clave para biodiversidad y pesca','No tiene relacion con comunidades','Se usa solo en temporada seca'], a:1, exp:'Su valor combina funcion ecologica y sustento comunitario.'},
+      {q:'Que factor afecta su equilibrio?', opts:['Calidad del agua','Color de las casas','Tipo de uniforme escolar','Horario de clases'], a:0, exp:'La calidad del agua impacta especies, pesca y salud ecosistemica.'},
+      {q:'Que enfoque pedagogico encaja con este tema?', opts:['Cartografia social y observacion local','Memorizacion sin contexto','Examen sin salida de campo','Ignorar saberes comunitarios'], a:0, exp:'La cartografia social conecta aprendizaje con territorio real.'}
+    ]
+  }
+];
+
+const QUIZ_TERRITORIO = [
+  {q:'La capital del departamento del Magdalena es:', opts:['Valledupar','Santa Marta','Cartagena','Sincelejo'], a:1, exp:'Santa Marta es la capital del departamento.'},
+  {q:'La Cienaga Grande se reconoce principalmente como:', opts:['Zona minera','Humedal estrategico','Desierto costero','Cordillera nevada'], a:1, exp:'Es un humedal clave para la region Caribe.'},
+  {q:'Que rio estructura gran parte del territorio?', opts:['Cauca','Sinu','Magdalena','Atrato'], a:2, exp:'El rio Magdalena articula dinamicas sociales y economicas.'},
+  {q:'Mompox es reconocido por:', opts:['Patrimonio historico-cultural','Puerto petrolero','Zona franca industrial','Base militar naval'], a:0, exp:'Mompox destaca por su valor historico y cultural.'},
+  {q:'Una practica pertinente para aprender del territorio es:', opts:['Ignorar actores locales','Cartografia social','Solo copiar definiciones','Aprender sin contexto'], a:1, exp:'La cartografia social vincula saber local y escuela.'}
+];
+
+const QUIZ_MAPA = [
+  {q:'Si viajas hacia la desembocadura del rio, llegas a:', opts:['El Banco','Barranquilla','Pivijay','Ariguani'], a:1, exp:'La desembocadura del Magdalena se ubica en Bocas de Ceniza, Barranquilla.'},
+  {q:'Municipio asociado al sur del departamento y ribera:', opts:['El Banco','Pueblo Viejo','Sitio Nuevo','Salamina'], a:0, exp:'El Banco es referente del sur ribereno.'},
+  {q:'Zona humedal-costera mas conocida:', opts:['Cienaga Grande','Ariguani','Nueva Granada','Chivolo'], a:0, exp:'La Cienaga Grande es un humedal central del territorio.'},
+  {q:'Municipio historico insular en el rio:', opts:['Mompox','Fundacion','Remolino','Concordia'], a:0, exp:'Mompox tiene fuerte identidad historica fluvial.'}
+];
+
+const STORY_NODES = {
+  inicio: {
+    text:'Eres un estudiante de una comunidad ribereña. Notas peces muertos cerca del muelle y basura en la orilla. Que haces primero?',
+    choices:[
+      {label:'Reportar a lideres y docentes para activar brigada ambiental', next:'brigada', eco:+18},
+      {label:'Ignorar el problema porque no es tu responsabilidad', next:'ignorar', eco:-15},
+      {label:'Subir fotos y convocar jornada de limpieza comunitaria', next:'convocar', eco:+12}
+    ]
+  },
+  brigada: {
+    text:'La brigada identifica un punto de vertimiento y acuerda monitoreo semanal con estudiantes y pescadores. La comunidad empieza a registrar cambios en el agua.',
+    choices:[
+      {label:'Continuar con monitoreo y educacion ambiental', next:'finalBueno', eco:+12},
+      {label:'Suspender el proceso al primer obstaculo', next:'finalMedio', eco:-8}
+    ]
+  },
+  convocar: {
+    text:'La jornada logra retirar residuos y visibiliza el problema. Falta consolidar acciones para evitar que se repita.',
+    choices:[
+      {label:'Crear comite escolar-comunitario permanente', next:'finalBueno', eco:+10},
+      {label:'Dejarlo como actividad unica', next:'finalMedio', eco:-6}
+    ]
+  },
+  ignorar: {
+    text:'Semanas despues, aumenta la contaminacion y disminuye la pesca. Las familias sienten impacto en ingresos y alimentacion.',
+    choices:[
+      {label:'Organizar accion tardia con apoyo comunitario', next:'finalMedio', eco:+4},
+      {label:'Mantener la inaccion', next:'finalMalo', eco:-12}
+    ]
+  },
+  finalBueno: { end:true, text:'Final positivo: el territorio mejora porque hubo organizacion comunitaria y aprendizaje activo.' },
+  finalMedio: { end:true, text:'Final intermedio: hubo avances parciales, pero falta continuidad para sostener resultados.' },
+  finalMalo: { end:true, text:'Final critico: la inaccion profundizo el problema ambiental y social.' }
+};
 
 function setView(v) {
   curView = v;
@@ -1280,8 +1493,8 @@ function openMod(key) {
   document.getElementById('m-mod-icon').textContent = m.icon;
   document.getElementById('m-mod-name').textContent = m.name;
   document.getElementById('m-mod-desc').textContent = m.desc;
-  document.getElementById('m-mod-content').innerHTML = m.items.map(it =>
-    `<div class="item-card" onclick="toast('${it.icon} ${it.title}')">
+  document.getElementById('m-mod-content').innerHTML = m.items.map((it, idx) =>
+    `<div class="item-card" onclick="handleModuleItem('${key}',${idx})">
       <span style="font-size:24px;flex-shrink:0;">${it.icon}</span>
       <div style="flex:1;">
         <div style="font-size:13px;font-weight:700;color:var(--negro);">${it.title}</div>
@@ -1298,8 +1511,8 @@ function openMod(key) {
   document.getElementById('w-mod-icon-w').textContent = m.icon;
   document.getElementById('w-mod-name-w').textContent = m.name;
   document.getElementById('w-mod-desc-w').textContent = m.desc;
-  document.getElementById('w-mod-content-w').innerHTML = m.items.map(it =>
-    `<div class="item-card" onclick="toast('${it.icon} ${it.title}')" style="margin-bottom:0;">
+  document.getElementById('w-mod-content-w').innerHTML = m.items.map((it, idx) =>
+    `<div class="item-card" onclick="handleModuleItem('${key}',${idx})" style="margin-bottom:0;">
       <span style="font-size:28px;flex-shrink:0;">${it.icon}</span>
       <div style="flex:1;">
         <div style="font-size:14px;font-weight:700;color:var(--negro);">${it.title}</div>
@@ -1310,6 +1523,183 @@ function openMod(key) {
     </div>`
   ).join('');
   nav('mod');
+}
+
+function handleModuleItem(key, idx) {
+  const item = MODS[key] && MODS[key].items[idx];
+  if (!item) return;
+  const activity = item.activity || '';
+  if (activity==='quizTerritorio') return startQuizActivity(QUIZ_TERRITORIO, 'Quiz del territorio', 'Responde antes de que se acabe el tiempo');
+  if (activity==='quizMapa') return startQuizActivity(QUIZ_MAPA, 'Juego: Donde esta?', 'Ubica mentalmente municipios y referentes');
+  if (activity==='story') return startStoryActivity();
+  if (activity==='readingHub') return openReadingHub();
+  if (activity==='readingRio') return startReadingFlow('rio');
+  toast(item.icon + ' ' + item.title);
+}
+
+function openActivityFrame(title, sub) {
+  const modal = document.getElementById('activity-modal');
+  document.getElementById('activity-title').textContent = title;
+  document.getElementById('activity-sub').textContent = sub;
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeActivity() {
+  if (actTimer) clearInterval(actTimer);
+  actTimer = null;
+  const modal = document.getElementById('activity-modal');
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden', 'true');
+  document.getElementById('activity-content').innerHTML = '';
+}
+
+function openReadingHub() {
+  openActivityFrame('Lectura y comprension', 'Elige un tema del Magdalena');
+  const wrap = document.getElementById('activity-content');
+  wrap.innerHTML = '<div class="act-grid"></div>';
+  const grid = wrap.querySelector('.act-grid');
+  grid.innerHTML = READING_TOPICS.map((r) =>
+    `<div class="act-card">
+      <h4>${r.title}</h4>
+      <p>${r.text.slice(0,160)}...</p>
+      <button class="act-btn vd" onclick="startReadingFlow('${r.id}')">Leer y responder</button>
+    </div>`
+  ).join('');
+}
+
+function startReadingFlow(id) {
+  const topic = READING_TOPICS.find((t) => t.id===id);
+  if (!topic) return;
+  actState.reading = topic;
+  openActivityFrame(topic.title, 'Lee y luego responde 3 preguntas');
+  const wrap = document.getElementById('activity-content');
+  wrap.innerHTML = `<div class="act-card">
+    <h4>Lectura</h4>
+    <p style="font-size:13px;line-height:1.65;color:var(--negro);">${topic.text}</p>
+    <button class="act-btn" onclick="startQuizActivity(actState.reading.questions,'${topic.title}','Comprension lectora')">Comenzar preguntas</button>
+  </div>`;
+}
+
+function startQuizActivity(bank, title, sub) {
+  if (!Array.isArray(bank) || !bank.length) return;
+  actState.bank = bank;
+  actState.idx = 0;
+  actState.score = 0;
+  actState.lock = false;
+  actState.seconds = 30;
+  openActivityFrame(title, sub);
+  renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+  if (actTimer) clearInterval(actTimer);
+  const q = actState.bank[actState.idx];
+  const wrap = document.getElementById('activity-content');
+  const progress = Math.round((actState.idx / actState.bank.length) * 100);
+  wrap.innerHTML = `<div class="act-card">
+    <div class="act-meta">
+      <span class="act-pill">Pregunta ${actState.idx + 1}/${actState.bank.length}</span>
+      <span class="act-pill">Tiempo: <b id="act-time">30</b>s</span>
+    </div>
+    <div class="act-bar"><span style="width:${progress}%;"></span></div>
+    <div class="act-question" style="margin-top:10px;">${q.q}</div>
+    <div class="act-options" id="act-options"></div>
+    <div id="act-feedback"></div>
+  </div>`;
+  const optWrap = document.getElementById('act-options');
+  optWrap.innerHTML = q.opts.map((o, i) => `<button class="act-option" onclick="answerQuiz(${i})">${o}</button>`).join('');
+  actState.lock = false;
+  actState.seconds = 30;
+  actTimer = setInterval(() => {
+    actState.seconds -= 1;
+    const node = document.getElementById('act-time');
+    if (node) node.textContent = String(actState.seconds);
+    if (actState.seconds <= 0) {
+      clearInterval(actTimer);
+      answerQuiz(-1);
+    }
+  }, 1000);
+}
+
+function answerQuiz(selected) {
+  if (actState.lock) return;
+  actState.lock = true;
+  if (actTimer) clearInterval(actTimer);
+  const q = actState.bank[actState.idx];
+  const opts = Array.from(document.querySelectorAll('.act-option'));
+  opts.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i===q.a) btn.classList.add('ok');
+    if (i===selected && i!==q.a) btn.classList.add('no');
+  });
+  const ok = selected===q.a;
+  if (ok) actState.score += 1;
+  const feed = document.getElementById('act-feedback');
+  feed.className = 'act-feedback';
+  feed.textContent = (ok ? 'Correcto. ' : 'Respuesta incorrecta. ') + q.exp;
+  const btnLabel = actState.idx === actState.bank.length - 1 ? 'Ver resultado' : 'Siguiente';
+  feed.innerHTML += `<button class="act-btn act-next" onclick="nextQuizQuestion()">${btnLabel}</button>`;
+}
+
+function nextQuizQuestion() {
+  actState.idx += 1;
+  if (actState.idx >= actState.bank.length) return finishQuiz();
+  renderQuizQuestion();
+}
+
+function finishQuiz() {
+  const total = actState.bank.length;
+  const pct = Math.round((actState.score / total) * 100);
+  const badge = pct >= 80 ? 'Insignia desbloqueada: Guardian del territorio' : 'Sigue practicando para desbloquear la insignia';
+  const place = pct >= 80 ? '#1 local' : pct >= 60 ? '#3 local' : '#7 local';
+  document.getElementById('activity-content').innerHTML = `<div class="act-card" style="text-align:center;">
+    <div style="font-size:46px;">${pct >= 80 ? '🏆' : pct >= 60 ? '🌱' : '📚'}</div>
+    <h4 style="font-family:'Fraunces',serif;font-size:30px;">${pct}%</h4>
+    <p>Acertaste ${actState.score} de ${total} preguntas.</p>
+    <p class="act-pill" style="margin-top:8px;">Ranking local: ${place}</p>
+    <p style="margin-top:10px;">${badge}</p>
+    <button class="act-btn" onclick="startQuizActivity(actState.bank, document.getElementById('activity-title').textContent, 'Intento de refuerzo')">Reintentar</button>
+  </div>`;
+}
+
+function startStoryActivity() {
+  actState.storyNode = 'inicio';
+  actState.eco = 50;
+  openActivityFrame('Historia interactiva', 'Elige tu camino en la Cienaga Grande');
+  renderStoryNode();
+}
+
+function renderStoryNode() {
+  const node = STORY_NODES[actState.storyNode];
+  if (!node) return;
+  const score = Math.max(0, Math.min(100, actState.eco));
+  if (node.end) {
+    document.getElementById('activity-content').innerHTML = `<div class="act-story">
+      <div class="act-meta"><span class="act-pill">Impacto territorial: ${score}/100</span></div>
+      <div class="act-bar" style="margin-bottom:10px;"><span style="width:${score}%;"></span></div>
+      <p>${node.text}</p>
+      <button class="act-btn ti" onclick="startStoryActivity()">Jugar de nuevo</button>
+    </div>`;
+    return;
+  }
+  document.getElementById('activity-content').innerHTML = `<div class="act-story">
+    <div class="act-meta"><span class="act-pill">Impacto territorial: ${score}/100</span></div>
+    <div class="act-bar" style="margin-bottom:10px;"><span style="width:${score}%;"></span></div>
+    <p>${node.text}</p>
+    <div class="act-story-choices" id="story-choices"></div>
+  </div>`;
+  const choices = document.getElementById('story-choices');
+  choices.innerHTML = node.choices.map((c, i) => `<button class="act-option" onclick="pickStoryChoice(${i})">${c.label}</button>`).join('');
+}
+
+function pickStoryChoice(i) {
+  const node = STORY_NODES[actState.storyNode];
+  if (!node || !node.choices || !node.choices[i]) return;
+  const choice = node.choices[i];
+  actState.eco += choice.eco;
+  actState.storyNode = choice.next;
+  renderStoryNode();
 }
 
 function switchTab(t) {
@@ -1329,6 +1719,10 @@ function toast(msg) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
 }
+
+document.addEventListener('keydown', (ev) => {
+  if (ev.key==='Escape') closeActivity();
+});
 </script>
 </body>
 </html>
