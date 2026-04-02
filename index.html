@@ -258,6 +258,115 @@ body {
 .tag-b { background:#dbeafe; color:#1e40af; }
 .tag-y { background:#fef3c7; color:#92400e; }
 
+/* MAPA MAGDALENA */
+.m-mapa { background:var(--fondo); }
+.m-map-hdr {
+  background:linear-gradient(140deg,var(--bosque),var(--verdeS));
+  padding:30px 24px 54px; position:relative;
+}
+.m-map-hdr::after {
+  content:''; position:absolute; bottom:-1px; left:0; right:0;
+  height:28px; background:var(--fondo); border-radius:50% 50% 0 0 / 28px 28px 0 0;
+}
+.m-map-body { padding:10px 18px 16px; overflow-y:auto; flex:1; }
+.m-map-canvas {
+  background:#fff; border:1px solid var(--borde); border-radius:18px;
+  padding:14px; box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+.m-map-headline {
+  display:inline-block; background:#f4e27a; color:#4f4a20; font-weight:700;
+  font-size:12px; letter-spacing:.5px; text-transform:uppercase; padding:4px 10px; border-radius:4px;
+}
+.m-map-lead { font-size:12px; color:var(--gris); line-height:1.45; margin-top:10px; }
+.m-region-list { margin-top:12px; display:flex; flex-direction:column; gap:9px; }
+.m-region-item {
+  background:#faf8f4; border:1px solid var(--borde); border-radius:12px;
+  padding:10px 11px; display:grid; grid-template-columns:74px 1fr; gap:10px;
+}
+.m-mini-map {
+  border-radius:10px; height:70px; background:linear-gradient(145deg,#fefdf7,#ebe3d3);
+  border:1px solid #dcd2be; position:relative; overflow:hidden;
+}
+.m-mini-map::after {
+  content:''; position:absolute; inset:12px 14px; border-radius:45% 55% 40% 60% / 55% 45% 58% 42%;
+  background:var(--mini-color,#52b788); opacity:.95;
+}
+.m-region-name { font-size:12px; font-weight:700; color:var(--bosque); margin-bottom:4px; }
+.m-region-munis { font-size:11px; color:#4b5563; line-height:1.35; }
+
+.map-poster {
+  margin-top:12px; border-radius:14px; overflow:hidden; border:1px solid var(--borde);
+  box-shadow:0 8px 24px rgba(0,0,0,.14); background:#ddd;
+}
+.map-poster img {
+  width:100%; height:auto; display:block;
+}
+.map-caption {
+  margin-top:10px; background:#faf8f4; border:1px solid var(--borde);
+  border-radius:12px; padding:10px 12px;
+}
+.map-caption h4 {
+  font-size:12px; color:var(--tierra); text-transform:uppercase; letter-spacing:.6px; margin-bottom:4px;
+}
+.map-caption p {
+  font-size:12px; color:#4b5563; line-height:1.4;
+}
+
+.w-map-infocard {
+  background:#fff; border:1px solid var(--borde); border-radius:18px; padding:18px;
+  box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+.w-map-title-row { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+.w-map-headline {
+  background:#f4e27a; color:#4f4a20; font-size:20px; font-weight:700;
+  padding:6px 12px; border-radius:5px; text-transform:uppercase;
+}
+.w-map-lead { font-size:15px; color:var(--gris); line-height:1.5; margin-bottom:14px; max-width:92%; }
+.w-region-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.w-region-item {
+  background:#faf8f4; border:1px solid var(--borde); border-radius:14px;
+  padding:10px 12px; display:grid; grid-template-columns:84px 1fr; gap:10px;
+}
+.w-mini-map {
+  border-radius:10px; height:76px; background:linear-gradient(145deg,#fefdf7,#ebe3d3);
+  border:1px solid #dcd2be; position:relative; overflow:hidden;
+}
+.w-mini-map::after {
+  content:''; position:absolute; inset:12px 13px; border-radius:45% 55% 40% 60% / 55% 45% 58% 42%;
+  background:var(--mini-color,#52b788); opacity:.95;
+}
+.w-region-name { font-size:13px; font-weight:700; color:var(--bosque); margin-bottom:4px; }
+.w-region-munis { font-size:12px; color:#4b5563; line-height:1.35; }
+
+.w-map-poster {
+  border-radius:16px; overflow:hidden; border:1px solid var(--borde);
+  box-shadow:0 12px 32px rgba(0,0,0,.14); background:#ddd;
+}
+.w-map-poster img {
+  width:100%; height:auto; display:block; transform:scale(1); transition:transform .35s ease;
+}
+/* .w-map-poster:hover img {  } */
+
+.w-mapa-wrap { display:grid; grid-template-columns:1.5fr 1fr; gap:16px; padding:18px 22px 22px; background:var(--fondo); flex:1; }
+.w-mapa-canvas {
+  background:#fff; border:1px solid var(--borde); border-radius:18px;
+  padding:18px; box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+.w-map-svg { width:100%; height:420px; }
+.w-mapa-side { display:flex; flex-direction:column; gap:12px; }
+.w-mapa-info {
+  background:linear-gradient(135deg,var(--verde),var(--verdeS));
+  border-radius:14px; padding:14px 16px; color:#fff;
+}
+.w-mapa-list {
+  background:#fff; border:1px solid var(--borde); border-radius:14px;
+  padding:12px; display:flex; flex-direction:column; gap:8px;
+}
+.w-mapa-item {
+  border:none; background:var(--fondo); border-radius:10px; padding:10px 12px;
+  text-align:left; cursor:pointer; font-family:'DM Sans',sans-serif;
+}
+
 /* PERFIL */
 .m-perf { background:var(--fondo); }
 .m-perf-hdr {
@@ -513,6 +622,7 @@ body {
   <button class="screen-btn" onclick="setScreen('login')">🔑 Login</button>
   <button class="screen-btn" onclick="setScreen('dash')">📊 Dashboard</button>
   <button class="screen-btn" onclick="setScreen('mod')">📚 Aprender</button>
+  <button class="screen-btn" onclick="setScreen('mapa')">🗺 Mapa</button>
   <button class="screen-btn" onclick="setScreen('perfil')">👤 Perfil</button>
   <button class="screen-btn" onclick="setScreen('acerca')">ℹ️ Acerca de</button>
 </div>
@@ -605,7 +715,7 @@ body {
     </div>
     <div class="m-bnav">
       <button class="m-nitem on"><span style="font-size:20px;">🏠</span>Inicio</button>
-      <button class="m-nitem" onclick="openMod('territorio')"><span style="font-size:20px;">🗺</span>Mapa</button>
+      <button class="m-nitem" onclick="nav('mapa')"><span style="font-size:20px;">🗺</span>Mapa</button>
       <button class="m-nitem" onclick="toast('🔔 Sin avisos nuevos')"><span style="font-size:20px;">🔔</span>Avisos</button>
       <button class="m-nitem" onclick="nav('perfil')"><span style="font-size:20px;">👤</span>Perfil</button>
     </div>
@@ -623,6 +733,34 @@ body {
     <div class="m-bnav">
       <button class="m-nitem" onclick="nav('dash')"><span style="font-size:20px;">🏠</span>Inicio</button>
       <button class="m-nitem on"><span style="font-size:20px;">📚</span>Aprender</button>
+      <button class="m-nitem" onclick="toast('🔔 Sin avisos')"><span style="font-size:20px;">🔔</span>Avisos</button>
+      <button class="m-nitem" onclick="nav('perfil')"><span style="font-size:20px;">👤</span>Perfil</button>
+    </div>
+  </div>
+
+  <!-- M MAPA -->
+  <div class="screen m-mapa" id="m-mapa">
+    <div class="m-map-hdr">
+      <button class="back-btn" onclick="nav('dash')">← Dashboard</button>
+      <div style="font-family:'Fraunces',serif;font-size:28px;color:#fff;font-weight:700;">Mapa del Magdalena</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.78);margin-top:4px;">Sitios representativos del territorio vivo</div>
+    </div>
+    <div class="m-map-body">
+      <div class="m-map-canvas">
+        <span class="m-map-headline">Area de influencia</span>
+        <p class="m-map-lead">Division politico-administrativa del Departamento del Magdalena con municipios y referentes territoriales.</p>
+        <div class="map-poster">
+          <img src="Mapa_division_politica_municipios_del_departamento_del_Magdalena.jpg" alt="Mapa politico administrativo del departamento del Magdalena" loading="lazy"/>
+        </div>
+        <div class="map-caption">
+          <h4>Lectura rapida</h4>
+          <p>Usa este mapa para ubicar municipios, subregiones y rutas pedagogicas en tus actividades de cartografia social.</p>
+        </div>
+      </div>
+    </div>
+    <div class="m-bnav">
+      <button class="m-nitem" onclick="nav('dash')"><span style="font-size:20px;">🏠</span>Inicio</button>
+      <button class="m-nitem on"><span style="font-size:20px;">🗺</span>Mapa</button>
       <button class="m-nitem" onclick="toast('🔔 Sin avisos')"><span style="font-size:20px;">🔔</span>Avisos</button>
       <button class="m-nitem" onclick="nav('perfil')"><span style="font-size:20px;">👤</span>Perfil</button>
     </div>
@@ -664,7 +802,7 @@ body {
     </div>
     <div class="m-bnav">
       <button class="m-nitem" onclick="nav('dash')"><span style="font-size:20px;">🏠</span>Inicio</button>
-      <button class="m-nitem" onclick="toast('🗺 Mapa')"><span style="font-size:20px;">🗺</span>Mapa</button>
+      <button class="m-nitem" onclick="nav('mapa')"><span style="font-size:20px;">🗺</span>Mapa</button>
       <button class="m-nitem" onclick="toast('🔔 Avisos')"><span style="font-size:20px;">🔔</span>Avisos</button>
       <button class="m-nitem on"><span style="font-size:20px;">👤</span>Perfil</button>
     </div>
@@ -797,7 +935,7 @@ body {
       <div class="w-logo">Territorio<span>Vivo</span></div>
       <div class="w-links">
         <span class="w-link">Inicio</span><span class="w-link">Módulos</span>
-        <span class="w-link">Mapa</span><span class="w-link">Avisos</span>
+        <span class="w-link" onclick="nav('mapa')">Mapa</span><span class="w-link">Avisos</span>
       </div>
       <div class="w-av-btn" onclick="nav('perfil')">🧑</div>
     </div>
@@ -809,6 +947,7 @@ body {
         <div class="w-s-item" onclick="openMod('aprender')">📚 Aprender</div>
         <div class="w-s-item" onclick="openMod('juegos')">🎮 Juegos</div>
         <div class="w-s-item" onclick="openMod('saberes')">🧑‍🌾 Saberes</div>
+        <div class="w-s-item" onclick="nav('mapa')">🗺 Mapa del Magdalena</div>
         <div class="w-s-item" onclick="nav('perfil')">📊 Mi Progreso</div>
         <div class="w-s-item" onclick="nav('perfil')">👤 Perfil</div>
         <div class="w-s-item" onclick="nav('acerca')">ℹ️ Acerca de</div>
@@ -839,6 +978,41 @@ body {
             <div class="w-act-item"><div class="w-act-dot" style="background:#dbeafe;">🎮</div><div style="flex:1;"><div style="font-size:13px;font-weight:600;">Quiz nivel 2</div><div style="font-size:11px;color:var(--gris);">Ayer</div></div><span>✅</span></div>
             <div class="w-act-item"><div class="w-act-dot" style="background:#fef3c7;">📖</div><div style="flex:1;"><div style="font-size:13px;font-weight:600;">Historia local</div><div style="font-size:11px;color:var(--gris);">Pendiente</div></div><span>⚠️</span></div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- W MAPA -->
+  <div class="screen" id="w-mapa" style="min-height:580px;">
+    <div class="w-nav vd">
+      <div class="w-logo">Territorio<span>Vivo</span></div>
+      <div class="w-links">
+        <span class="w-link" onclick="nav('dash')">Dashboard</span>
+        <span class="w-link">Cartografía viva</span>
+      </div>
+      <button class="w-nav-btn ghost" onclick="nav('dash')">← Dashboard</button>
+    </div>
+    <div class="w-mapa-wrap">
+      <div class="w-map-infocard">
+        <div class="w-map-title-row">
+          <div class="w-map-headline">Area de influencia</div>
+        </div>
+        <p class="w-map-lead">Mapa oficial de referencia para trabajar division territorial, municipios y contexto geopedagogico del Magdalena.</p>
+        <div class="w-map-poster">
+          <img src="Mapa_division_politica_municipios_del_departamento_del_Magdalena.jpg" alt="Mapa politico administrativo del departamento del Magdalena" loading="lazy"/>
+        </div>
+      </div>
+      <div class="w-mapa-side">
+        <div class="w-mapa-info">
+          <div style="font-family:'Fraunces',serif;font-size:28px;font-weight:700;line-height:1.1;">Magdalena politico-administrativo</div>
+          <div style="font-size:14px;opacity:.9;margin-top:8px;line-height:1.45;">Visualizacion clara del departamento para orientar proyectos por municipios, corredores del rio y subregiones de trabajo.</div>
+        </div>
+        <div class="w-mapa-list">
+          <button class="w-mapa-item">📌 Capital: Santa Marta D.T.H.C.</button>
+          <button class="w-mapa-item">🧭 Referencia para salidas pedagogicas</button>
+          <button class="w-mapa-item">🗂 Apoyo para guias territoriales</button>
+          <button class="w-mapa-item">🤝 Base para trabajo comunitario</button>
         </div>
       </div>
     </div>
@@ -998,13 +1172,41 @@ const MODS = {
   }
 };
 
+const MAP_SPOTS = {
+  sierra: {
+    title:'Sierra Nevada',
+    sub:'Montaña sagrada y ecosistema unico que alimenta cuencas del Caribe.'
+  },
+  santaMarta: {
+    title:'Santa Marta',
+    sub:'Bahia historica que conecta mar, turismo comunitario y patrimonio cultural.'
+  },
+  barranquilla: {
+    title:'Barranquilla',
+    sub:'Desembocadura del rio Magdalena, ciudad creativa y corazon del Carnaval.'
+  },
+  cienaga: {
+    title:'Cienaga Grande',
+    sub:'Humedal vital para aves, pesca artesanal y equilibrio ambiental del territorio.'
+  },
+  mompox: {
+    title:'Mompox',
+    sub:'Centro historico colonial con tradiciones orales y artes del rio.'
+  },
+  elBanco: {
+    title:'El Banco',
+    sub:'Territorio ribereno de musica, agricultura y memoria del Magdalena medio.'
+  }
+};
+
 const navColors = {
   hero:'#1b4332', login:'#2d6a4f', dash:'#2d6a4f',
-  mod:'#2d6a4f', perfil:'#7c4a1e', acerca:'#2d6a4f'
+  mod:'#2d6a4f', mapa:'#1a4e8a', perfil:'#7c4a1e', acerca:'#2d6a4f'
 };
-const screenKeys = ['hero','login','dash','mod','perfil','acerca'];
+const screenKeys = ['hero','login','dash','mod','mapa','perfil','acerca'];
 let curView = 'mobile', curScreen = 'hero';
 let toastTimer;
+let curMapSpot = 'barranquilla';
 
 function setView(v) {
   curView = v;
@@ -1014,6 +1216,9 @@ function setView(v) {
 }
 
 function setScreen(s) {
+  if (s==='mapa') {
+    setMapSpot(curMapSpot);
+  }
   if (s==='mod' && document.getElementById('m-mod-content') && !document.getElementById('m-mod-content').children.length) {
     openMod('aprender');
     return;
@@ -1024,6 +1229,9 @@ function setScreen(s) {
 }
 
 function nav(s) {
+  if (s==='mapa') {
+    setMapSpot(curMapSpot);
+  }
   if (s==='mod' && document.getElementById('m-mod-content') && !document.getElementById('m-mod-content').children.length) {
     openMod('aprender');
     return;
@@ -1045,6 +1253,23 @@ function showActive() {
   // status bar
   const sb = document.getElementById('m-status');
   if (sb) { sb.style.background = navColors[curScreen] || '#2d6a4f'; sb.style.color = '#fff'; }
+}
+
+function setMapSpot(key) {
+  const s = MAP_SPOTS[key];
+  if (!s) return;
+  curMapSpot = key;
+  const mTitle = document.getElementById('m-map-title');
+  const mSub = document.getElementById('m-map-sub');
+  const wTitle = document.getElementById('w-map-title');
+  const wSub = document.getElementById('w-map-sub');
+  if (mTitle) mTitle.textContent = s.title;
+  if (mSub) mSub.textContent = s.sub;
+  if (wTitle) wTitle.textContent = s.title;
+  if (wSub) wSub.textContent = s.sub;
+  document.querySelectorAll('.map-node').forEach((n) => {
+    n.classList.toggle('active', n.getAttribute('data-map-key')===key);
+  });
 }
 
 function openMod(key) {
