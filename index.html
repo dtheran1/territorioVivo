@@ -512,7 +512,7 @@ body {
   <button class="screen-btn active" onclick="setScreen('hero')">🏠 Inicio</button>
   <button class="screen-btn" onclick="setScreen('login')">🔑 Login</button>
   <button class="screen-btn" onclick="setScreen('dash')">📊 Dashboard</button>
-  <button class="screen-btn" onclick="setScreen('mod')">📚 Módulo</button>
+  <button class="screen-btn" onclick="setScreen('mod')">📚 Aprender</button>
   <button class="screen-btn" onclick="setScreen('perfil')">👤 Perfil</button>
   <button class="screen-btn" onclick="setScreen('acerca')">ℹ️ Acerca de</button>
 </div>
@@ -616,13 +616,13 @@ body {
     <div class="m-mod-hdr verde" id="m-mod-hdr">
       <button class="back-btn" onclick="nav('dash')">← Dashboard</button>
       <div style="font-size:44px;margin-bottom:10px;" id="m-mod-icon">🗺</div>
-      <div style="font-family:'Fraunces',serif;font-size:26px;color:#fff;font-weight:700;" id="m-mod-name">Mi Territorio</div>
-      <div style="color:rgba(255,255,255,.75);font-size:13px;margin-top:4px;" id="m-mod-desc">Explora y comparte tu comunidad</div>
+      <div style="font-family:'Fraunces',serif;font-size:26px;color:#fff;font-weight:700;" id="m-mod-name">Aprender</div>
+      <div style="color:rgba(255,255,255,.75);font-size:13px;margin-top:4px;" id="m-mod-desc">Guías, proyectos y recursos educativos</div>
     </div>
     <div class="m-mod-content" id="m-mod-content"></div>
     <div class="m-bnav">
       <button class="m-nitem" onclick="nav('dash')"><span style="font-size:20px;">🏠</span>Inicio</button>
-      <button class="m-nitem on"><span style="font-size:20px;">📚</span>Módulo</button>
+      <button class="m-nitem on"><span style="font-size:20px;">📚</span>Aprender</button>
       <button class="m-nitem" onclick="toast('🔔 Sin avisos')"><span style="font-size:20px;">🔔</span>Avisos</button>
       <button class="m-nitem" onclick="nav('perfil')"><span style="font-size:20px;">👤</span>Perfil</button>
     </div>
@@ -729,11 +729,11 @@ body {
           <button class="w-btn-p" onclick="nav('login')">Iniciar sesión</button>
           <button class="w-btn-s" onclick="nav('login')">Registrarse gratis</button>
         </div>
-        <div class="w-stats">
+        <!-- <div class="w-stats">
           <div><div class="w-stat-num">1,200+</div><div class="w-stat-lbl">Estudiantes</div></div>
           <div><div class="w-stat-num">45</div><div class="w-stat-lbl">Comunidades</div></div>
           <div><div class="w-stat-num">8</div><div class="w-stat-lbl">Módulos</div></div>
-        </div>
+        </div> -->
       </div>
       <div class="w-hero-right">
         <div class="w-phone-mock">
@@ -774,12 +774,12 @@ body {
         <div class="w-login-form">
           <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:var(--negro);margin-bottom:4px;">Bienvenido/a 🌿</div>
           <div style="font-size:14px;color:var(--gris);margin-bottom:24px;">Accede a tu espacio de aprendizaje</div>
-          <div style="font-size:11px;font-weight:700;color:var(--tierra);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Soy...</div>
+          <!-- <div style="font-size:11px;font-weight:700;color:var(--tierra);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Soy...</div>
           <div class="w-roles">
             <button class="w-role active">🎓<br>Estudiante</button>
             <button class="w-role">👩‍🏫<br>Docente</button>
             <button class="w-role">🧑‍🌾<br>Comunidad</button>
-          </div>
+          </div> -->
           <label class="flabel">Usuario o correo</label>
           <input class="w-finput" placeholder="tu@correo.edu.co"/>
           <label class="flabel">Contraseña</label>
@@ -853,7 +853,7 @@ body {
     </div>
     <div style="padding:28px 48px 16px;display:flex;align-items:center;gap:16px;" id="w-mod-hdr-band">
       <div style="font-size:40px;" id="w-mod-icon-w">🗺</div>
-      <div><div style="font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:#fff;" id="w-mod-name-w">Mi Territorio</div><div style="color:rgba(255,255,255,.7);font-size:14px;" id="w-mod-desc-w">Explora y comparte tu comunidad</div></div>
+      <div><div style="font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:#fff;" id="w-mod-name-w">Aprender</div><div style="color:rgba(255,255,255,.7);font-size:14px;" id="w-mod-desc-w">Guías, proyectos y recursos educativos</div></div>
     </div>
     <div style="padding:20px 48px;background:var(--fondo);flex:1;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-content:start;" id="w-mod-content-w"></div>
   </div>
@@ -1014,12 +1014,20 @@ function setView(v) {
 }
 
 function setScreen(s) {
+  if (s==='mod' && document.getElementById('m-mod-content') && !document.getElementById('m-mod-content').children.length) {
+    openMod('aprender');
+    return;
+  }
   curScreen = s;
   document.querySelectorAll('.screen-btn').forEach((b,i) => b.classList.toggle('active', screenKeys[i]===s));
   showActive();
 }
 
 function nav(s) {
+  if (s==='mod' && document.getElementById('m-mod-content') && !document.getElementById('m-mod-content').children.length) {
+    openMod('aprender');
+    return;
+  }
   curScreen = s;
   document.querySelectorAll('.screen-btn').forEach((b,i) => b.classList.toggle('active', screenKeys[i]===s));
   showActive();
